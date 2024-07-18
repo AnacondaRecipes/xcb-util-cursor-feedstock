@@ -10,8 +10,8 @@ source:
   sha256: 28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
 
 build:
-  number: 1
-  skip: true  # [not linux]
+  number: 0
+  skip: true  # [s390x or not linux]
   run_exports:
     - {{ pin_subpackage('xcb-util-cursor', max_pin='x.x') }}
 
@@ -21,25 +21,26 @@ requirements:
     - make
     - m4
     - pkg-config
+    - {{ cdt('libxau-devel') }}               # [linux]
+    - {{ cdt('xorg-x11-proto-devel') }}       # [linux]
+    - {{ cdt('xcb-util-devel') }}             # [linux]
+    - {{ cdt('xcb-util-image-devel') }}       # [linux]
+    - {{ cdt('xcb-util-renderutil-devel') }}  # [linux]
   host:
-    - libxcb >=1.13
-    - xorg-xproto
-    - xcb-util-renderutil
-    - xcb-util-image
+    - libxcb 1.15
   run:
-    - libxcb >=1.13
+    - libxcb >=1.15
 
 test:
   commands:
     - test -f ${PREFIX}/lib/libxcb-cursor.so
 
 about:
+  description: xcb-util port of libxcursor.
   home: https://xcb.freedesktop.org/
+  dev_url: https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor
+  doc_url: https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor
   license: MIT
   license_family: MIT
   license_file: COPYING
   summary: 'port of Xlib libXcursor functions'
-
-extra:
-  recipe-maintainers:
-    - n-elie 

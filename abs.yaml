@@ -1,0 +1,4 @@
+channels:
+  - rafaelmartins-qt
+
+upload_without_merge: true
