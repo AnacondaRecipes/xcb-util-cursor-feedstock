@@ -32,8 +32,9 @@ requirements:
 test:
   commands:
     - test -f ${PREFIX}/lib/libxcb-cursor.so
-  downstreams:
-    - qtbase
+  # Check downstream packages if needed.
+  # downstreams:
+  #   - qtbase
 
 about:
   description: xcb-util port of libxcursor.
