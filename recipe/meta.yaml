@@ -34,8 +34,8 @@ test:
   commands:
     - test -f ${PREFIX}/lib/libxcb-cursor.so
   # Check downstream packages if needed.
-  downstreams:
-    - qtbase
+  # downstreams:
+  #   - qtbase
 
 about:
   home: https://xcb.freedesktop.org/
